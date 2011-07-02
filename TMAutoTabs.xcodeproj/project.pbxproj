@@ -10,6 +10,8 @@
 		8C18C3DB13BFA33C007F60D5 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C3DA13BFA33C007F60D5 /* NSStringAdditions.m */; };
 		8C18C3F013BFA45D007F60D5 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C3DA13BFA33C007F60D5 /* NSStringAdditions.m */; };
 		8C18C42B13BFA960007F60D5 /* TabDetectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C42A13BFA960007F60D5 /* TabDetectionTests.m */; };
+		8C18C43313BFAA3C007F60D5 /* FileBasedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C43213BFAA3C007F60D5 /* FileBasedTests.m */; };
+		8C18C45A13BFBB77007F60D5 /* FileTests in Resources */ = {isa = PBXBuildFile; fileRef = 8C18C45813BFBB77007F60D5 /* FileTests */; };
 		8C7D57B213BAF0AB0081406A /* TMAutoTabs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D57B113BAF0AB0081406A /* TMAutoTabs.m */; };
 		8CD2EE0313BD11AA0079327B /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2EE0213BD11AA0079327B /* TextView.m */; };
 		8CD2EF8713BD1DBB0079327B /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2EF5013BD1DAD0079327B /* JRSwizzle.m */; };
@@ -26,6 +28,8 @@
 		8C18C3D913BFA33C007F60D5 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		8C18C3DA13BFA33C007F60D5 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
 		8C18C42A13BFA960007F60D5 /* TabDetectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabDetectionTests.m; sourceTree = "<group>"; };
+		8C18C43213BFAA3C007F60D5 /* FileBasedTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileBasedTests.m; sourceTree = "<group>"; };
+		8C18C45813BFBB77007F60D5 /* FileTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FileTests; sourceTree = "<group>"; };
 		8C7D57B113BAF0AB0081406A /* TMAutoTabs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAutoTabs.m; sourceTree = "<group>"; };
 		8CD2EE0113BD11AA0079327B /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
 		8CD2EE0213BD11AA0079327B /* TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				8C18C42A13BFA960007F60D5 /* TabDetectionTests.m */,
+				8C18C43213BFAA3C007F60D5 /* FileBasedTests.m */,
+				8C18C45813BFBB77007F60D5 /* FileTests */,
 				8C18C38013BF9239007F60D5 /* AutoTabsTest-Info.plist */,
 			);
 			path = Testing;
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C18C45A13BFBB77007F60D5 /* FileTests in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +283,7 @@
 			files = (
 				8C18C3F013BFA45D007F60D5 /* NSStringAdditions.m in Sources */,
 				8C18C42B13BFA960007F60D5 /* TabDetectionTests.m in Sources */,
+				8C18C43313BFAA3C007F60D5 /* FileBasedTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +393,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = AutoTabsTest;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -412,6 +421,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = AutoTabsTest;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
