@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C18C3B513BF930B007F60D5 /* TabDetectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C3B413BF930B007F60D5 /* TabDetectionTests.m */; };
 		8C18C3DB13BFA33C007F60D5 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C3DA13BFA33C007F60D5 /* NSStringAdditions.m */; };
 		8C18C3F013BFA45D007F60D5 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C3DA13BFA33C007F60D5 /* NSStringAdditions.m */; };
+		8C18C42B13BFA960007F60D5 /* TabDetectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C18C42A13BFA960007F60D5 /* TabDetectionTests.m */; };
 		8C7D57B213BAF0AB0081406A /* TMAutoTabs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7D57B113BAF0AB0081406A /* TMAutoTabs.m */; };
 		8CD2EE0313BD11AA0079327B /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2EE0213BD11AA0079327B /* TextView.m */; };
 		8CD2EF8713BD1DBB0079327B /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD2EF5013BD1DAD0079327B /* JRSwizzle.m */; };
@@ -23,9 +23,9 @@
 		32DBCF630370AF2F00C91783 /* TMAutoTabs_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAutoTabs_Prefix.pch; sourceTree = "<group>"; };
 		8C18C37F13BF9239007F60D5 /* AutoTabsTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoTabsTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C18C38013BF9239007F60D5 /* AutoTabsTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoTabsTest-Info.plist"; sourceTree = "<group>"; };
-		8C18C3B413BF930B007F60D5 /* TabDetectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabDetectionTests.m; sourceTree = "<group>"; };
 		8C18C3D913BFA33C007F60D5 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
 		8C18C3DA13BFA33C007F60D5 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringAdditions.m; sourceTree = "<group>"; };
+		8C18C42A13BFA960007F60D5 /* TabDetectionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabDetectionTests.m; sourceTree = "<group>"; };
 		8C7D57B113BAF0AB0081406A /* TMAutoTabs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMAutoTabs.m; sourceTree = "<group>"; };
 		8CD2EE0113BD11AA0079327B /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
 		8CD2EE0213BD11AA0079327B /* TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
@@ -64,10 +64,9 @@
 				08FB77AFFE84173DC02AAC07 /* Classes */,
 				32C88E010371C26100C91783 /* Other Sources */,
 				089C167CFE841241C02AAC07 /* Resources */,
-				8C18C3B313BF92E8007F60D5 /* Tests */,
+				8C18C3B313BF92E8007F60D5 /* Testing */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
-				8C18C38013BF9239007F60D5 /* AutoTabsTest-Info.plist */,
 			);
 			name = TMAutoTabs;
 			sourceTree = "<group>";
@@ -137,12 +136,13 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		8C18C3B313BF92E8007F60D5 /* Tests */ = {
+		8C18C3B313BF92E8007F60D5 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
-				8C18C3B413BF930B007F60D5 /* TabDetectionTests.m */,
+				8C18C42A13BFA960007F60D5 /* TabDetectionTests.m */,
+				8C18C38013BF9239007F60D5 /* AutoTabsTest-Info.plist */,
 			);
-			name = Tests;
+			path = Testing;
 			sourceTree = "<group>";
 		};
 		8CD2EF2013BD1DAD0079327B /* JRSwizzle */ = {
@@ -274,8 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C18C3B513BF930B007F60D5 /* TabDetectionTests.m in Sources */,
 				8C18C3F013BFA45D007F60D5 /* NSStringAdditions.m in Sources */,
+				8C18C42B13BFA960007F60D5 /* TabDetectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +374,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "AutoTabsTest-Info.plist";
+				INFOPLIST_FILE = "Testing/AutoTabsTest-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -401,7 +401,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				INFOPLIST_FILE = "AutoTabsTest-Info.plist";
+				INFOPLIST_FILE = "Testing/AutoTabsTest-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
