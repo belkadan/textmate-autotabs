@@ -1,13 +1,18 @@
 # TMAutoTabs #
 
-Adds Quick Look functionality to the [TextMate][] project outline view. Requires Mac OS X v10.6. Compatible with plugins like [MissingDrawer][].
+When you load a new document in TextMate, TMAutoTabs attempts to detect if the document uses spaces or tabs for indentation. If the document uses spaces, TMAutoTabs also guesses the indent size.
 
-To install, download [TMQuickLook.tmplugin][] to `~/Library/Application Support/TextMate/PlugIns` and relaunch TextMate. (You should create that folder if it doesn't already exist.)
+To install, download [TMAutoTabs.tmplugin][] to `~/Library/Application Support/TextMate/PlugIns` and relaunch TextMate. (You should create that folder if it doesn't already exist.)
 
-Bug reports welcome!
+This software may not work perfectly, particularly on projects that prefer spaces to tabs. Bug reports welcome!
 
-  [TMQuickLook.tmplugin]: https://github.com/downloads/belkadan/textmate-quicklook/TMQuickLook.tmplugin.zip
+  [TMAutoTabs.tmplugin]: https://github.com/downloads/belkadan/textmate-autotabs/TMAutoTabs.tmplugin.zip
   [TextMate]: http://macromates.com/
+
+
+## Known Issues ##
+- In a project, switching back and forth between documents counts as reloading each document...meaning, if you override the autodetection, it doesn't stick.
+- No per-document or per-project preferences.
 
 
 ## License ##
