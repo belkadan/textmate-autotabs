@@ -12,9 +12,11 @@
 
 	STAssertTrue([@"\t" ComBelkadanTMAutoTabs_autodetectSoftTabstops:&width], @"single tab");
 	STAssertEquals(width, NO_SOFT_TABS, @"single tab");
-
-	STAssertTrue([@"  " ComBelkadanTMAutoTabs_autodetectSoftTabstops:&width], @"two spaces");
-	STAssertEquals(width, (NSUInteger)(2), @"two spaces");
+	
+	STAssertFalse([@"  " ComBelkadanTMAutoTabs_autodetectSoftTabstops:&width], @"two spaces");
+	
+	STAssertTrue([@"   " ComBelkadanTMAutoTabs_autodetectSoftTabstops:&width], @"three spaces");
+	STAssertEquals(width, (NSUInteger)(3), @"three spaces");
 
 	STAssertTrue([@"    " ComBelkadanTMAutoTabs_autodetectSoftTabstops:&width], @"four spaces");
 	STAssertEquals(width, (NSUInteger)(4), @"four spaces");

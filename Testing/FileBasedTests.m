@@ -72,18 +72,18 @@
 	if (shouldBeConclusive) {
 		NSUInteger expected = (NSUInteger)[basename integerValue];
 		
-		NSUInteger actual = (~0);
+		NSUInteger actual = (~0U);
 		STAssertTrue([contents ComBelkadanTMAutoTabs_autodetectSoftTabstops:&actual], @"this test should have been conclusive: %@", basename);
-		STAssertEquals(actual, expected, @"incorrect guess for '%@'", basename);
+		STAssertEquals(actual, expected, @"incorrect guess (%2$lu) for '%1$@'", basename, (unsigned long) actual);
 
 	} else {
-		NSUInteger detected = (~0);
+		NSUInteger detected = (~0U);
 		BOOL wasConclusive = [contents ComBelkadanTMAutoTabs_autodetectSoftTabstops:&detected];
 		if (wasConclusive) {
 			if (detected == NO_SOFT_TABS) {
 				STFail(@"'%@' should not have been conclusive, but tabs were detected", basename);
 			} else {
-				STFail(@"'%@' should not have been conclusive, but %lu spaces were detected", (unsigned long) detected);
+				STFail(@"'%@' should not have been conclusive, but %lu spaces were detected", basename, (unsigned long) detected);
 			}
 		}
 	}
