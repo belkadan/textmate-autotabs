@@ -5,4 +5,4 @@
 - (BOOL)ComBelkadanTMAutoTabs_autodetectSoftTabstops:(NSUInteger *)width;
 @end
 
-#define NO_SOFT_TABS (0U)
+#define NO_SOFT_TABS ((NSUInteger)(0))
