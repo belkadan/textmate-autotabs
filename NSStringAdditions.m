@@ -6,8 +6,8 @@
 	NSAssert(width != NULL, @"Must have an out parameter!");
 	
 	NSInteger tabsVsSpaces = 0;
-	BOOL twoSpaceIndents = NO;
-	NSUInteger minSpaces = 50; // FIXME
+	NSUInteger prevIndent = 0;
+	NSUInteger minSpaces = NSUIntegerMax;
 	
 	NSScanner *scanner = [NSScanner scannerWithString:self];
 	[scanner setCharactersToBeSkipped:nil];
@@ -25,14 +25,25 @@
 				if ([startOfLine hasPrefix:@"\t"]) {
 					// Tabs are easy.
 					tabsVsSpaces += 1;
-				} else if ([startOfLine hasPrefix:@"    "]) {
+					prevIndent = 0;
+
+				} else if ([startOfLine hasPrefix:@"   "]) {
 					// We could use two spaces as our test, but there are occasions
 					// when two-space indents are distinct from tabs (Markdown).
 					tabsVsSpaces -= 1;
-					minSpaces = MIN(minSpaces, [startOfLine length]);
+
+					NSUInteger length = [startOfLine length];
+					if (prevIndent == 2 && length == 4) {
+						minSpaces = 2;						
+					} else {
+						minSpaces = MIN(minSpaces, length);						
+					}
+					prevIndent = length;
+
 				} else if ([startOfLine hasPrefix:@"  "]) {
-					// So, two spaces only counts if there are no other indents.
-					twoSpaceIndents = YES;
+					// So, two spaces only counts if they bracket four-space indents.
+					// This will get things wrong some times.
+					prevIndent = 2;
 				}
 			}
 		}
@@ -47,8 +58,6 @@
 		*width = 0;
 	} else if (tabsVsSpaces < 0) {
 		*width = minSpaces;
-	} else if (twoSpaceIndents) {
-		*width = 2;
 	} else {
 		return NO;
 	}
