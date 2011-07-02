@@ -3,7 +3,7 @@
 #import "NSStringAdditions.h"
 
 @interface ComBelkadanTMAutoTabs_TextView (OakTextView)
-- (NSTextStorage *)textStorage;
+- (NSString *)stringValue;
 - (id)document; // OakDocument
 
 - (void)setSoftTabs:(BOOL)useSoftTabs;
@@ -32,7 +32,7 @@
 - (void)ComBelkadanTMAutoTabs_autodetectTabMode {
 	if (![self document]) return;
 	
-	NSString *contents = [[self textStorage] string];
+	NSString *contents = [self stringValue];
 	NSUInteger tabWidth;
 	if ([contents ComBelkadanTMAutoTabs_autodetectSoftTabstops:&tabWidth]) {
 		if (tabWidth == NO_SOFT_TABS) {
