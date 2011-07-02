@@ -1,5 +1,6 @@
 #import "SwizzleMacros.h"
 #import "TextView.h"
+#import "NSStringAdditions.h"
 
 @interface ComBelkadanTMAutoTabs_TextView (OakTextView)
 - (NSTextStorage *)textStorage;
@@ -32,53 +33,15 @@
 	if (![self document]) return;
 	
 	NSString *contents = [[self textStorage] string];
-	NSInteger tabsVsSpaces = 0;
-	BOOL twoSpaceIndents = NO;
-	NSUInteger minSpaces = 50; // FIXME
-
-	NSScanner *scanner = [NSScanner scannerWithString:contents];
-	[scanner setCharactersToBeSkipped:nil];
-	
-	NSCharacterSet *whitespace = [NSCharacterSet whitespaceCharacterSet];
-	NSCharacterSet *newline = [NSCharacterSet newlineCharacterSet];
-
-	NSString *startOfLine;
-	// For each line...
-	do {
-		// 1. Scan the whitespace at the beginning.
-		if ([scanner scanCharactersFromSet:whitespace intoString:&startOfLine]) {
-			// 2. See if it uses tabs or spaces.
-			if ([startOfLine length]) {
-				if ([startOfLine hasPrefix:@"\t"]) {
-					// Tabs are easy.
-					tabsVsSpaces += 1;
-				} else if ([startOfLine hasPrefix:@"    "]) {
-					// We could use two spaces as our test, but there are occasions
-					// when two-space indents are distinct from tabs (Markdown).
-					tabsVsSpaces -= 1;
-					minSpaces = MIN(minSpaces, [startOfLine length]);
-				} else if ([startOfLine hasPrefix:@"  "]) {
-					// So, two spaces only counts if there are no other indents.
-					twoSpaceIndents = YES;
-				}
-			}
+	NSUInteger tabWidth;
+	if ([contents ComBelkadanTMAutoTabs_autodetectSoftTabstops:&tabWidth]) {
+		if (tabWidth == NO_SOFT_TABS) {
+			[self setSoftTabs:NO];
+		} else {
+			[self setSoftTabs:YES];
+			[self setTabSize:tabWidth];
 		}
-
-		// 3. Read until the end of the line.
-		(void)[scanner scanUpToCharactersFromSet:newline intoString:NULL];
-		// 4. Eat the newline at the end (if there is one).
-	} while ([scanner scanCharactersFromSet:newline intoString:NULL]);
-	
-	// See how we did!
-	if (tabsVsSpaces > 0) {
-		[self setSoftTabs:NO];
-	} else if (tabsVsSpaces < 0) {
-		[self setSoftTabs:YES];
-		[self setTabSize:minSpaces];
-	} else if (twoSpaceIndents) {
-		[self setSoftTabs:YES];
-		[self setTabSize:2];
-	} // else no indents; let TextMate guess about this file.
+	}
 }
 
 @end
